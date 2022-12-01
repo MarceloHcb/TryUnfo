@@ -8,7 +8,7 @@ class App extends React.Component {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.state = {
+    const INITIAL_STATE = {
       cardName: '',
       cardDescription: '',
       cardAttr1: '',
@@ -18,7 +18,10 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
+    };
+    this.state = {
+      ...INITIAL_STATE,
     };
   }
 
@@ -27,12 +30,37 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, this.validationButton);
   }
 
   onSaveButtonClick() {
 
   }
+
+  validationButton = () => {
+    const { cardName, cardImage, cardDescription, cardAttr1,
+      cardAttr2, cardAttr3, cardRare } = this.state;
+    const nameValidation = cardName.length > 0;
+    const imageValidation = cardImage.length > 0;
+    const cardRareValidation = cardRare.length > 0;
+    const descriptionValidation = cardDescription.length > 0;
+    const maxNumber = 90;
+    const maxSumNumber = 210;
+    const cardAttrValidation = parseFloat(cardAttr1)
+    <= maxNumber && parseFloat(cardAttr1) >= 0
+    && parseFloat(cardAttr2) <= maxNumber && parseFloat(cardAttr2) >= 0
+    && parseFloat(cardAttr3) <= maxNumber && parseFloat(cardAttr3) >= 0;
+
+    const atribSumValidation = parseFloat(cardAttr1)
+     + parseFloat(cardAttr2) + parseFloat(cardAttr3) <= maxSumNumber;
+
+    this.setState({
+      isSaveButtonDisabled: !(nameValidation
+        && imageValidation && descriptionValidation
+        && cardAttrValidation && atribSumValidation
+         && cardRareValidation),
+    });
+  };
 
   render() {
     return (

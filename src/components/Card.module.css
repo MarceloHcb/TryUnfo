@@ -1,6 +1,10 @@
 .container {
+  align-items: center;
   background-color: green;
   color: aliceblued;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
   width: 400px;
 }
