@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './Card.module.css';
 
 class Card extends React.Component {
   render() {
@@ -14,9 +15,8 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
     return (
-      <div>
+      <fieldset className={ style.container }>
         <h2 data-testid="name-card">
-          {' '}
           { cardName }
           {' '}
         </h2>
@@ -36,7 +36,7 @@ class Card extends React.Component {
             Super Trunfo
           </h2>
         )}
-      </div>
+      </fieldset>
     );
   }
 }

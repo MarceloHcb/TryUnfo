@@ -1,0 +1,17 @@
+.formContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.nameInput {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.descriptionInput {
+  border: none;
+  border-bottom: 1px solid black;
+}

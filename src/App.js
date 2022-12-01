@@ -1,5 +1,7 @@
 import React from 'react';
+import Card from './components/Card';
 import Form from './components/Form';
+import style from './App.module.css';
 
 class App extends React.Component {
   constructor() {
@@ -20,8 +22,12 @@ class App extends React.Component {
     };
   }
 
-  onInputChange() {
-
+  onInputChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   onSaveButtonClick() {
@@ -30,14 +36,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-      </div>
+        <div className={ style.container }>
+          <Form
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+        </div>
+      </>
     );
   }
 }
