@@ -90,6 +90,15 @@ class App extends React.Component {
   };
 
   render() {
+    const { savedCards } = this.state;
+    const newDivCard = (
+      <div className={ style.allCardsContainer }>
+        {savedCards.map((el, index) => (
+          <div key={ index }>
+            <Card { ...el } />
+          </div>))}
+      </div>
+    );
     return (
       <>
         <h1>Tryunfo</h1>
@@ -105,6 +114,8 @@ class App extends React.Component {
             onSaveButtonClick={ this.onSaveButtonClick }
           />
         </div>
+        {savedCards.length > 0
+         && newDivCard }
       </>
     );
   }
