@@ -37,7 +37,8 @@ class App extends React.Component {
   onSaveButtonClick(event) {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+      cardAttr2, cardAttr3, cardImage, cardRare,
+      cardTrunfo, hasTrunfo, savedCards } = this.state;
     const newElement = { cardName,
       cardDescription,
       cardAttr1,
@@ -45,8 +46,10 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo };
-    this.setState(({ savedCards }) => ({
+      cardTrunfo,
+      hasTrunfo };
+    const result = savedCards.some((el) => el.cardTrunfo === true) || cardTrunfo === true;
+    this.setState(() => ({
       savedCards: [...savedCards, newElement],
       cardName: '',
       cardDescription: '',
@@ -56,7 +59,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
+      hasTrunfo: result,
       isSaveButtonDisabled: true,
     }));
   }

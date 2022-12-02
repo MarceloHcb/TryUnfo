@@ -17,7 +17,34 @@ class Form extends React.Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
-    console.log(hasTrunfo);
+    const nohas = (
+      <label htmlFor="rarityInput">
+        Super Trybe Trunfo
+        <input
+          type="checkbox"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+          name="cardTrunfo"
+          id="rarityInput"
+          data-testid="trunfo-input"
+        />
+      </label>
+    );
+    const has = (
+      <label htmlFor="rarityInput">
+        Você já tem um Super Trunfo em seu baralho
+        <input
+          type="checkbox"
+          disabled
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+          name="cardTrunfo"
+          id="rarityInput"
+          data-testid="trunfo-input"
+        />
+      </label>
+    );
+
     return (
       <form action="" className={ style.formContainer }>
         <h2>ADICIONE UMA NOVA CARTA</h2>
@@ -109,17 +136,11 @@ class Form extends React.Component {
         </label>
         <div>
 
-          <label htmlFor="rarityInput">
-            Super Trybe Trunfo
-            <input
-              type="checkbox"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-              name="cardTrunfo"
-              id="rarityInput"
-              data-testid="trunfo-input"
-            />
-          </label>
+          {!hasTrunfo
+          && nohas}
+
+          {hasTrunfo
+          && has}
 
           <button
             type="submit"
@@ -131,7 +152,6 @@ class Form extends React.Component {
 
           </button>
         </div>
-
       </form>
     );
   }
