@@ -13,6 +13,8 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      button,
+      onDeleteButtonClick,
     } = this.props;
     return (
       <fieldset className={ style.container }>
@@ -36,6 +38,17 @@ class Card extends React.Component {
             Super Trunfo
           </h2>
         )}
+        {button && (
+          <button
+            type="submit"
+            data-testid="delete-button"
+            name={ cardName }
+            onClick={ onDeleteButtonClick }
+          >
+            Excluir
+
+          </button>
+        )}
       </fieldset>
     );
   }
@@ -50,6 +63,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  button: PropTypes.bool.isRequired,
+  onDeleteButtonClick: PropTypes.func.isRequired,
 };
 
 export default Card;

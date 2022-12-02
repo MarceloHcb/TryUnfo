@@ -8,6 +8,7 @@ class App extends React.Component {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
     const INITIAL_STATE = {
       cardName: '',
       cardDescription: '',
@@ -19,6 +20,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      button: false,
       savedCards: [],
     };
     this.state = {
@@ -39,6 +41,8 @@ class App extends React.Component {
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
       cardTrunfo, hasTrunfo, savedCards } = this.state;
+    let button = this.state;
+    button = true;
     const newElement = { cardName,
       cardDescription,
       cardAttr1,
@@ -47,7 +51,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo };
+      hasTrunfo,
+      button };
     const result = savedCards.some((el) => el.cardTrunfo === true) || cardTrunfo === true;
     this.setState(() => ({
       savedCards: [...savedCards, newElement],
@@ -62,6 +67,17 @@ class App extends React.Component {
       hasTrunfo: result,
       isSaveButtonDisabled: true,
     }));
+  }
+
+  onDeleteButtonClick({ target }) {
+    const { savedCards } = this.state;
+    console.log(savedCards);
+    const newSaved = savedCards.filter((item) => item.cardName !== target.name);
+    const hasTrunfoSaved = newSaved.some((item) => item.cardTrunfo === true);
+    this.setState({
+      savedCards: newSaved,
+      hasTrunfo: hasTrunfoSaved,
+    });
   }
 
   validationButton = () => {
@@ -95,7 +111,10 @@ class App extends React.Component {
       <div className={ style.allCardsContainer }>
         {savedCards.map((el, index) => (
           <div key={ index }>
-            <Card { ...el } />
+            <Card
+              { ...el }
+              onDeleteButtonClick={ this.onDeleteButtonClick }
+            />
           </div>))}
       </div>
     );
