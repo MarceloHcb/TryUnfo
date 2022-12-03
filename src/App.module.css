@@ -3,4 +3,22 @@
   display: flex;
   gap: 40px;
   justify-content: center;
+  width: 100%;
+}
+
+.allCardsContainer {
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 90px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  position: absolute;
+  text-align: center;
+  top: -70px;
 }

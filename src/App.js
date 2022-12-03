@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
 import style from './App.module.css';
+import FilterCard from './components/FilterCards';
 
 class App extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
+    this.filterFunction = this.filterFunction.bind(this);
     const INITIAL_STATE = {
       cardName: '',
       cardDescription: '',
@@ -21,6 +23,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       button: false,
+      filteredText: '',
       savedCards: [],
     };
     this.state = {
@@ -40,7 +43,7 @@ class App extends React.Component {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, hasTrunfo, savedCards } = this.state;
+      cardTrunfo, hasTrunfo, savedCards, filteredText } = this.state;
     let button = this.state;
     button = true;
     const newElement = { cardName,
@@ -52,6 +55,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      filteredText,
       button };
     const result = savedCards.some((el) => el.cardTrunfo === true) || cardTrunfo === true;
     this.setState(() => ({
@@ -71,7 +75,6 @@ class App extends React.Component {
 
   onDeleteButtonClick({ target }) {
     const { savedCards } = this.state;
-    console.log(savedCards);
     const newSaved = savedCards.filter((item) => item.cardName !== target.name);
     const hasTrunfoSaved = newSaved.some((item) => item.cardTrunfo === true);
     this.setState({
@@ -105,12 +108,20 @@ class App extends React.Component {
     });
   };
 
+  filterFunction({ target }) {
+    this.setState({
+      filteredText: target.value,
+    });
+  }
+
   render() {
-    const { savedCards } = this.state;
+    const { savedCards, filteredText } = this.state;
+    const filterCards = savedCards.filter((card) => card.cardName.includes(filteredText));
     const newDivCard = (
       <div className={ style.allCardsContainer }>
-        {savedCards.map((el, index) => (
-          <div key={ index }>
+        <h1>Todas as Cartas</h1>
+        {filterCards.map((el, index) => (
+          <div key={ index } className={ style.cards }>
             <Card
               { ...el }
               onDeleteButtonClick={ this.onDeleteButtonClick }
@@ -118,9 +129,11 @@ class App extends React.Component {
           </div>))}
       </div>
     );
+
     return (
       <>
-        <h1>Tryunfo</h1>
+
+        <FilterCard filterFunction={ this.filterFunction } />
         <div className={ style.container }>
           <Form
             { ...this.state }
