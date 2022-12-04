@@ -6,6 +6,7 @@ class FilterCard extends React.Component {
   render() {
     const {
       filterFunction,
+      isFilterDisable,
     } = this.props;
     return (
       <fieldset className={ style.container }>
@@ -15,14 +16,16 @@ class FilterCard extends React.Component {
             type="text"
             id="name-filter-input"
             data-testid="name-filter"
+            disabled={ isFilterDisable }
             onChange={ filterFunction }
           />
         </label>
         <label htmlFor="selectFilter">
           Filtrar por Raridade
           <select
-            name="cardRare"
+            name="selectFilter"
             id="selectFilter"
+            disabled={ isFilterDisable }
             onChange={ filterFunction }
             data-testid="rare-filter"
           >
@@ -32,6 +35,19 @@ class FilterCard extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
+
+        <label htmlFor="TrunfoFilter">
+          <input
+            type="checkbox"
+            // checked={ cardTrunfo }
+            onChange={ filterFunction }
+            name="TrunfoFilter"
+            id="TrunfoFilter"
+            data-testid="trunfo-filter"
+          />
+          Filtrar por Trybe Trunfo
+        </label>
+
       </fieldset>
     );
   }
@@ -39,6 +55,7 @@ class FilterCard extends React.Component {
 
 FilterCard.propTypes = {
   filterFunction: PropTypes.func.isRequired,
+  isFilterDisable: PropTypes.bool.isRequired,
 };
 
 export default FilterCard;

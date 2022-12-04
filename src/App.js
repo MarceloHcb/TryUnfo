@@ -24,6 +24,8 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       button: false,
       filteredText: '',
+      isFilterChecked: '',
+      isFilterDisable: false,
       savedCards: [],
     };
     this.state = {
@@ -43,7 +45,7 @@ class App extends React.Component {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, hasTrunfo, savedCards, filteredText } = this.state;
+      cardTrunfo, hasTrunfo, savedCards, filteredText, isFilterChecked } = this.state;
     let button = this.state;
     button = true;
     const newElement = { cardName,
@@ -56,6 +58,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       filteredText,
+      isFilterChecked,
       button };
     const result = savedCards.some((el) => el.cardTrunfo === true) || cardTrunfo === true;
     this.setState(() => ({
@@ -110,16 +113,23 @@ class App extends React.Component {
 
   filterFunction({ target }) {
     const { value } = target;
-    console.log(value);
+    const { isFilterChecked, isFilterDisable } = this.state;
+    const { checked } = target;
+    console.log(isFilterChecked);
+    console.log(isFilterDisable);
     this.setState({
       filteredText: value === 'todas' ? '' : value,
+      isFilterDisable: checked,
+      isFilterChecked: checked,
     });
   }
 
   render() {
-    const { savedCards, filteredText } = this.state;
-    const filterCards = savedCards.filter((card) => card.cardName.includes(filteredText)
-    || card.cardRare === filteredText);
+    const { savedCards, filteredText, isFilterChecked } = this.state;
+    const filterCards = savedCards
+      .filter((card) => (isFilterChecked
+        ? card.cardTrunfo : card.cardName.includes(filteredText)
+    || card.cardRare === filteredText));
     const newDivCard = (
       <div className={ style.allCardsContainer }>
         <h1>Todas as Cartas</h1>
@@ -135,7 +145,7 @@ class App extends React.Component {
 
     return (
       <>
-        <FilterCard filterFunction={ this.filterFunction } />
+        <FilterCard { ...this.state } filterFunction={ this.filterFunction } />
         <div className={ style.container }>
           <Form
             { ...this.state }
