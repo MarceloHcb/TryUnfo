@@ -109,14 +109,17 @@ class App extends React.Component {
   };
 
   filterFunction({ target }) {
+    const { value } = target;
+    console.log(value);
     this.setState({
-      filteredText: target.value,
+      filteredText: value === 'todas' ? '' : value,
     });
   }
 
   render() {
     const { savedCards, filteredText } = this.state;
-    const filterCards = savedCards.filter((card) => card.cardName.includes(filteredText));
+    const filterCards = savedCards.filter((card) => card.cardName.includes(filteredText)
+    || card.cardRare === filteredText);
     const newDivCard = (
       <div className={ style.allCardsContainer }>
         <h1>Todas as Cartas</h1>
@@ -132,7 +135,6 @@ class App extends React.Component {
 
     return (
       <>
-
         <FilterCard filterFunction={ this.filterFunction } />
         <div className={ style.container }>
           <Form

@@ -18,6 +18,20 @@ class FilterCard extends React.Component {
             onChange={ filterFunction }
           />
         </label>
+        <label htmlFor="selectFilter">
+          Filtrar por Raridade
+          <select
+            name="cardRare"
+            id="selectFilter"
+            onChange={ filterFunction }
+            data-testid="rare-filter"
+          >
+            <option value="todas">todas</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+        </label>
       </fieldset>
     );
   }
