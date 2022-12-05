@@ -41,6 +41,7 @@ class FilterCard extends React.Component {
             type="checkbox"
             onChange={ filterFunction }
             className={ style.checkbox }
+            value="Super Trunfo"
             name="TrunfoFilter"
             id="TrunfoFilter"
             data-testid="trunfo-filter"

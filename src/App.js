@@ -135,7 +135,7 @@ class App extends React.Component {
     || card.cardRare === filteredText));
     const newDivCard = (
       <div className={ style.allCardsContainer }>
-        <h1>Todas as Cartas</h1>
+        <h1>{filteredText || 'Todas as Cartas'}</h1>
         {filterCards.map((el, index) => (
           <div key={ index } className={ style.cards }>
             <Card

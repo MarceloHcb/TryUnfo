@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 18px;
   justify-content: center;
+  margin-top: 130px;
 }
 
 .nameInput {
