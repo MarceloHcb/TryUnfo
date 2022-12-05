@@ -1,3 +1,20 @@
-.conteinar {
+.container {
+  align-items: center;
+  background-color: aquamarine;
+  border: none;
   display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 30px;
+}
+
+label {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox {
+  margin-right: 10px;
 }

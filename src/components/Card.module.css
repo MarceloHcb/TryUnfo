@@ -1,10 +1,45 @@
 .container {
   align-items: center;
-  background-color: green;
+  border: none;
+  border-radius: 20px;
+  box-shadow: rgba(1, 1, 1, 0.35) 1px 5px 15px;
   color: aliceblued;
   display: flex;
   flex-direction: column;
-  height: 600px;
+  font-family: Tangerine , cursive;
+  font-size: 20px;
+  font-weight: 400;
+  gap: 5px;
+  height: 480px;
   justify-content: center;
-  width: 400px;
+  margin-bottom: 50px;
+  width: 320px;
+}
+
+img {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: rgba(1, 1, 1, 0.35) 1px 5px 15px;
+  height: 150px;
+  margin-top: -25px;
+  position: relative;
+  width: 280px;
+}
+
+.trunfo {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 9px;
+}
+
+span {
+  display: flex;
+  font-size: 55px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+.btn {
+  background-color: whitesmoke;
+  bottom: 90px;
 }

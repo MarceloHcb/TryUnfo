@@ -1,15 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   align-items: center;
   display: flex;
   gap: 40px;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 75%;
 }
 
 .allCardsContainer {
   align-content: center;
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
   margin-top: 90px;
   position: relative;
@@ -21,4 +29,13 @@ h1 {
   position: absolute;
   text-align: center;
   top: -70px;
+}
+
+button {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: aquamarine;
 }

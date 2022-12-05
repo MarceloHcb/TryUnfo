@@ -19,6 +19,7 @@ class App extends React.Component {
       cardAttr3: '',
       cardImage: '',
       cardRare: '',
+      color: '',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
@@ -45,7 +46,8 @@ class App extends React.Component {
     event.preventDefault();
     const { cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage, cardRare,
-      cardTrunfo, hasTrunfo, savedCards, filteredText, isFilterChecked } = this.state;
+      cardTrunfo, hasTrunfo, savedCards, filteredText,
+      isFilterChecked, color } = this.state;
     let button = this.state;
     button = true;
     const newElement = { cardName,
@@ -56,6 +58,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      color,
       hasTrunfo,
       filteredText,
       isFilterChecked,

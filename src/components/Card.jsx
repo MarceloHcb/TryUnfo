@@ -14,12 +14,16 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
       button,
+      color,
       onDeleteButtonClick,
     } = this.props;
     return (
-      <fieldset className={ style.container }>
+      <fieldset className={ style.container } style={ { backgroundColor: color } }>
         <h2 data-testid="name-card">
-          { cardName }
+          <span>
+            {' '}
+            { cardName }
+          </span>
           {' '}
         </h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
@@ -27,14 +31,26 @@ class Card extends React.Component {
           {' '}
           { cardDescription }
         </p>
-        <h2 data-testid="attr1-card">{ cardAttr1 }</h2>
-        <h2 data-testid="attr2-card">{ cardAttr2 }</h2>
-        <h2 data-testid="attr3-card">{ cardAttr3 }</h2>
+        <h2 data-testid="attr1-card">
+          Atributo 1 ....................
+          {' '}
+          { cardAttr1 }
+        </h2>
+        <h2 data-testid="attr2-card">
+          Atributo 2 ....................
+          {' '}
+          { cardAttr2 }
+        </h2>
+        <h2 data-testid="attr3-card">
+          Atributo 3 ....................
+          {' '}
+          { cardAttr3 }
+        </h2>
 
         <h3 data-testid="rare-card">{ cardRare }</h3>
 
         {cardTrunfo && (
-          <h2 data-testid="trunfo-card">
+          <h2 data-testid="trunfo-card" className={ style.trunfo }>
             Super Trunfo
           </h2>
         )}
@@ -43,6 +59,7 @@ class Card extends React.Component {
             type="submit"
             data-testid="delete-button"
             name={ cardName }
+            className={ style.btn }
             onClick={ onDeleteButtonClick }
           >
             Excluir
@@ -64,6 +81,7 @@ Card.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   button: PropTypes.bool.isRequired,
+  color: PropTypes.string.isRequired,
   onDeleteButtonClick: PropTypes.func.isRequired,
 };
 

@@ -40,6 +40,7 @@ class Form extends React.Component {
           onChange={ onInputChange }
           name="cardTrunfo"
           id="rarityInput"
+          className={ style.rarityInput }
           data-testid="trunfo-input"
         />
       </label>
@@ -134,7 +135,11 @@ class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <div>
+        <label htmlFor="colorInput">
+          Cor
+          <input type="color" name="color" id="colorInput" onChange={ onInputChange } />
+        </label>
+        <div className={ style.checkbox }>
 
           {!hasTrunfo
           && nohas}

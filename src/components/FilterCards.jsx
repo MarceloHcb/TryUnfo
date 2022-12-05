@@ -39,8 +39,8 @@ class FilterCard extends React.Component {
         <label htmlFor="TrunfoFilter">
           <input
             type="checkbox"
-            // checked={ cardTrunfo }
             onChange={ filterFunction }
+            className={ style.checkbox }
             name="TrunfoFilter"
             id="TrunfoFilter"
             data-testid="trunfo-filter"
