@@ -4,20 +4,27 @@
   padding: 0;
 }
 
+html {
+  background-color: rgba(2, 156, 218, 1);
+}
+
 .container {
   align-items: center;
+  background-color: rgb(18, 21, 26);
   display: flex;
   gap: 40px;
   justify-content: space-evenly;
   margin: 0 auto;
-  width: 75%;
+  width: 100%;
 }
 
 .allCardsContainer {
   align-content: center;
+  background-color: rgb(18, 21, 26);
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  height: 100vh;
   justify-content: center;
   margin-top: 90px;
   position: relative;
@@ -37,5 +44,5 @@ button {
 }
 
 button:hover {
-  background-color: rgb(73, 202, 194);
+  background-color: rgba(2, 156, 218, 1);
 }

@@ -48,6 +48,7 @@ class Form extends React.Component {
 
     return (
       <form action="" className={ style.formContainer }>
+        <div className={ style.background } />
         <h2>ADICIONE UMA NOVA CARTA</h2>
         <label htmlFor="nameInput">
           Nome:

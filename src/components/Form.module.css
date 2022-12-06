@@ -5,6 +5,20 @@
   gap: 18px;
   justify-content: center;
   margin-top: 130px;
+  position: relative;
+  z-index: 20;
+}
+
+.background {
+  background-color: rgba(2, 156, 218, 1);
+  border-radius: 20px;
+  height: 104%;
+  margin-bottom: 32px;
+  margin-left: 32px;
+  opacity: 0.3;
+  position: absolute;
+  width: 150%;
+  z-index: -2;
 }
 
 .nameInput {
@@ -32,7 +46,7 @@ select {
 }
 
 input:focus {
-  background-color: rgb(73, 202, 194);
+  background-color: rgba(2, 156, 218, 1);
   border: none;
 }
 

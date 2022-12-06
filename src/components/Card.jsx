@@ -27,10 +27,10 @@ class Card extends React.Component {
           {' '}
         </h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">
+        <h3 data-testid="description-card">
           {' '}
           { cardDescription }
-        </p>
+        </h3>
         <h2 data-testid="attr1-card">
           Atributo 1 ....................
           {' '}

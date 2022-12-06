@@ -2,8 +2,8 @@
   align-items: center;
   border: none;
   border-radius: 20px;
-  box-shadow: rgba(1, 1, 1, 0.35) 1px 5px 15px;
-  color: aliceblued;
+  box-shadow: rgba(2, 156, 218, 1) 1px 5px 15px;
+  color: white;
   display: flex;
   flex-direction: column;
   font-family: Tangerine , cursive;
@@ -13,10 +13,12 @@
   height: 480px;
   justify-content: center;
   margin-bottom: 50px;
+  position: relative;
   width: 320px;
 }
 
 img {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZebhdeVKnn97H0NKYlmWbD4ChwKi3UGtUaw&usqp=CAU');
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: rgba(1, 1, 1, 0.35) 1px 5px 15px;
@@ -27,19 +29,32 @@ img {
 }
 
 .trunfo {
-  border: 1px solid black;
-  border-radius: 10px;
+  background-color: rgba(2, 156, 218, 1);
+  border-radius: 50%;
+  box-shadow: rgba(2, 156, 218, 1) 1px 5px 15px;
+  left: 8px;
   padding: 9px;
+  position: absolute;
+  text-align: center;
+  top: 3px;
+  width: 80px;
+  word-wrap: break-word;
+}
+
+h3 {
+  font-size: 30px;
 }
 
 span {
+  align-items: center;
   display: flex;
   font-size: 55px;
   font-weight: 700;
+  justify-content: center;
   padding: 20px;
 }
 
 .btn {
-  background-color: whitesmoke;
+  background: linear-gradient(90deg, rgba(2, 156, 218, 1) 17%, rgba(0, 212, 255, 1) 100%);
   bottom: 90px;
 }
