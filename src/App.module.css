@@ -24,7 +24,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   margin-top: 90px;
   position: relative;
